@@ -29,7 +29,7 @@ public class Controlador_FRM_VentanaBiblioteca implements ActionListener {
     {
         if(e.getActionCommand().equalsIgnoreCase("Buscar"))
         {
-           buscar();
+               buscar();
         }
         
         if(e.getActionCommand().equalsIgnoreCase("Agregar"))

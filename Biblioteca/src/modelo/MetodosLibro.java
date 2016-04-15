@@ -34,16 +34,15 @@ public class MetodosLibro {
         {
             if(listaLibro.get(i).getNumeroPrestamo().equalsIgnoreCase(numeroPrestamo))
             {
-                
                 arregloInformacionConsultar[0]=listaLibro.get(i).getNumeroPrestamo();
                 arregloInformacionConsultar[1]=listaLibro.get(i).getNombreUsuario();
                 arregloInformacionConsultar[2]=listaLibro.get(i).getCedulaUsuario();
                 arregloInformacionConsultar[3]=listaLibro.get(i).getIsbLibro();
                 verificar=true;
             }
-                                    
+                                
         }
-        return verificar;
+         return verificar;
     }
     
     public String [] devolverArreglo()
@@ -75,6 +74,11 @@ public class MetodosLibro {
         }
     }
     
-    
+     public String devolverCodigo()
+    {
+        String codigo="0000"+this.listaLibro.size()+1;
+        codigo=codigo.substring(codigo.length()-5, codigo.length());
+        return codigo;
+    }
     
 }
