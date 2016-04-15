@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.Controlador_FRM_VentanaBiblioteca;
+
 /**
  *
  * @author Usuario
@@ -16,6 +18,39 @@ public class PanelBotones extends javax.swing.JPanel {
      */
     public PanelBotones() {
         initComponents();
+    }
+    
+    public void agregarEventos(Controlador_FRM_VentanaBiblioteca controlador)
+    {
+        this.btnBuscar.addActionListener(controlador);
+        this.btnAgregar.addActionListener(controlador);
+        this.btnModificar.addActionListener(controlador);
+        this.btnEliminar.addActionListener(controlador);
+    }
+    
+    public void inicializarGUI()
+    {
+        this.btnBuscar.setEnabled(true);
+        this.btnAgregar.setEnabled(false);
+        this.btnModificar.setEnabled(false);
+        this.btnEliminar.setEnabled(false);
+    }
+    
+    public void habilitarAgregar()
+    {
+        this.btnBuscar.setEnabled(false);
+        this.btnAgregar.setEnabled(true);
+        this.btnModificar.setEnabled(false);
+        this.btnEliminar.setEnabled(false);
+    }
+    
+    public void habilitarEdicion()
+    {
+        this.btnBuscar.setEnabled(false);
+        this.btnAgregar.setEnabled(false);
+        this.btnModificar.setEnabled(true);
+        this.btnEliminar.setEnabled(true);
+    
     }
 
     /**

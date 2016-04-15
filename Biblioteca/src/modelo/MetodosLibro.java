@@ -15,7 +15,7 @@ public class MetodosLibro {
     
     ArrayList <Libro> listaLibro;
     String arregloInformacionConsultar[] = new String[4];
-    boolean verificar=false;
+    
     
     public MetodosLibro()
     {
@@ -29,18 +29,19 @@ public class MetodosLibro {
     
     public boolean consultarLibro(String numeroPrestamo)
     {
+        boolean verificar=false;
         for (int i = 0; i < listaLibro.size(); i++)
         {
             if(listaLibro.get(i).getNumeroPrestamo().equalsIgnoreCase(numeroPrestamo))
             {
-                verificar=true;
+                
                 arregloInformacionConsultar[0]=listaLibro.get(i).getNumeroPrestamo();
                 arregloInformacionConsultar[1]=listaLibro.get(i).getNombreUsuario();
                 arregloInformacionConsultar[2]=listaLibro.get(i).getCedulaUsuario();
                 arregloInformacionConsultar[3]=listaLibro.get(i).getIsbLibro();
-                
+                verificar=true;
             }
-                        
+                                    
         }
         return verificar;
     }
@@ -65,9 +66,12 @@ public class MetodosLibro {
     
     public void eliminarLibro(String numeroPrestamo)
     {
-        for (int i = 0; i < listaLibro.size(); i++) 
-        {
+         for (int i = 0; i < listaLibro.size(); i++) {
             
+                if(listaLibro.get(i).getNumeroPrestamo().equalsIgnoreCase(numeroPrestamo))
+                {
+                    listaLibro.remove(i);
+                }
         }
     }
     

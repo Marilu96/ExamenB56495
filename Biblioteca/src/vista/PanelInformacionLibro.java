@@ -5,19 +5,77 @@
  */
 package vista;
 
+import controlador.Controlador_FRM_VentanaBiblioteca;
+
 /**
  *
  * @author Usuario
  */
 public class PanelInformacionLibro extends javax.swing.JPanel {
+    Controlador_FRM_VentanaBiblioteca controlador;
 
     /**
      * Creates new form PanelInformacionLibro
      */
     public PanelInformacionLibro() {
         initComponents();
+        
     }
+    
+     public void agregarEventos(Controlador_FRM_VentanaBiblioteca controlador)
+    {
+        this.controlador=controlador;
+    }
+    public String devolverNumeroPrestamo()
+    {
+        return this.txtNumeroPrestamo.getText();
+    }
+    
+    public void inicializarGUI()
+    {
+        this.txtNumeroPrestamo.setEnabled(true);
+        this.txtNombreUsuario.setEnabled(false);
+        this.txtCedulaUsuario.setEnabled(false);
+        this.txtISBLibro.setEnabled(false);
+        
+    }
+    
+    public void habilitarEdicion()
+    {
+        this.txtNumeroPrestamo.setEnabled(false);
+        this.txtNombreUsuario.setEnabled(true);
+        this.txtCedulaUsuario.setEnabled(true);
+        this.txtISBLibro.setEnabled(true);
+    
+    }
+    
+    public void limpiarGUI()
+    {
+        this.txtNumeroPrestamo.setText("");
+        this.txtNombreUsuario.setText("");
+        this.txtCedulaUsuario.setText("");
+        this.txtISBLibro.setText("");
+    
+    }
+    
+    public void mostrarInformacion(String arreglo[])
+    {
+        this.txtNombreUsuario.setText(arreglo[1]);
+        this.txtCedulaUsuario.setText(arreglo[2]);
+        this.txtISBLibro.setText(arreglo[3]);
 
+    }
+    
+     public String [] devolverInformacion()
+    {
+        String info[]= new String[4];
+        info[0]=this.txtNumeroPrestamo.getText();
+        info[1]=this.txtNombreUsuario.getText();
+        info[2]=this.txtCedulaUsuario.getText();
+        info[3]=this.txtISBLibro.getText();
+        
+        return info;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,6 +101,12 @@ public class PanelInformacionLibro extends javax.swing.JPanel {
         jLabel3.setText("Cédula del Usuario");
 
         jLabel4.setText("ISB del libro");
+
+        txtNumeroPrestamo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroPrestamoKeyPressed(evt);
+            }
+        });
 
         txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +165,14 @@ public class PanelInformacionLibro extends javax.swing.JPanel {
     private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreUsuarioActionPerformed
+
+    private void txtNumeroPrestamoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroPrestamoKeyPressed
+        if(evt.getKeyCode()==10)
+        {
+            this.controlador.buscar();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroPrestamoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
